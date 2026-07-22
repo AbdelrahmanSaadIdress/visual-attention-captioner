@@ -2,6 +2,10 @@ from typing import List
 
 from nltk.translate.bleu_score import SmoothingFunction, corpus_bleu
 from pycocoevalcap.cider.cider import Cider
+from nltk.translate.meteor_score import meteor_score
+import nltk
+nltk.download('wordnet', quiet=True)
+nltk.download('omw-1.4', quiet=True)
 
 
 def eval_BLEU(candidates: List[List[str]], references: List[List[List[str]]]) -> dict:
@@ -54,3 +58,29 @@ def token_accuracy(logits, targets, pad_idx: int = 1) -> float:
     mask = targets != pad_idx
     correct = (preds == targets) & mask
     return correct.sum().item() / mask.sum().item()
+
+def eval_METEOR(candidates: List[List[str]], references: List[List[List[str]]]):
+    """
+    Corpus-level METEOR with multi-reference support.
+
+    Args:
+        candidates : list of hypotheses
+                     candidates[i] = ['a', 'dog', 'runs']
+
+        references : list of reference sets — one set per image
+                     references[i] = [
+                         ['a', 'dog', 'runs'],
+                         ['the', 'dog', 'is', 'running'],
+                         ...up to 5 refs
+                     ]
+
+    Returns:
+        dict with key 'meteor'
+    """
+    scores = []
+    for hyp, refs in zip(candidates, references):
+        # meteor_score takes a list of reference token lists and one hypothesis token list
+        score = meteor_score(references=refs, hypothesis=hyp)
+        scores.append(score)
+
+    return {"meteor": sum(scores) / len(scores) if scores else 0.0}
