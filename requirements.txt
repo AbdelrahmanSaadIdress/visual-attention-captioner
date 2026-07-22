@@ -16,3 +16,5 @@ huggingface_hub
 
 # Run once after installing spacy:
 #   python -m spacy download en_core_web_sm
+
+gradio==6.20.0

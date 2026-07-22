@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+production_needs/*.csv
+production_needs/*.pkl
+production_needs/*.pt
+
