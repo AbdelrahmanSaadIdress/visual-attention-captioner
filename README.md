@@ -43,14 +43,13 @@ accuracy improved, and BLEU/CIDEr on validation crept upward.
 
 **Epochs 11 → 50:**
 
-<!-- TODO: paste logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu1.png, bleu2.png,
-     bleu3.png, bleu4.png, cider.png here, e.g.:
-![BLEU-1, epochs 11-50](logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu1.png)
-![BLEU-2, epochs 11-50](logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu2.png)
-![BLEU-3, epochs 11-50](logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu3.png)
-![BLEU-4, epochs 11-50](logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu4.png)
-![CIDEr, epochs 11-50](logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/cider.png)
--->
+<p align="center">
+  <img src="logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu1.png" width="180">
+  <img src="logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu2.png" width="180">
+  <img src="logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu3.png" width="180">
+  <img src="logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/bleu4.png" width="180">
+  <img src="logs/STAGE_ONE/From_EPOCH11_Till_EPOCH50/cider.png" width="180">
+</p>
 
 But past that point, progress stalled. Training loss kept inching down and training
 accuracy kept inching up, epoch after epoch — the model was still fitting the training
@@ -61,14 +60,13 @@ still going down, but that was no longer translating into better captions.
 
 **Epochs 71 → 113 — the plateau:**
 
-<!-- TODO: paste logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu1.png, bleu2.png,
-     bleu3.png, bleu4.png, cider.png here, e.g.:
-![BLEU-1, epochs 71-113](logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu1.png)
-![BLEU-2, epochs 71-113](logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu2.png)
-![BLEU-3, epochs 71-113](logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu3.png)
-![BLEU-4, epochs 71-113](logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu4.png)
-![CIDEr, epochs 71-113](logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/cider.png)
--->
+<p align="center">
+  <img src="logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu1.png" width="180">
+  <img src="logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu2.png" width="180">
+  <img src="logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu3.png" width="180">
+  <img src="logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/bleu4.png" width="180">
+  <img src="logs/STAGE_ONE/From_EPOCH71_Till_EPOCH113/cider.png" width="180">
+</p>
 
 This is the classic symptom of the **exposure bias / objective mismatch** problem that
 motivates the second stage below: cross-entropy trains the model to predict the next
