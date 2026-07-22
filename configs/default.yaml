@@ -1,0 +1,65 @@
+# Default training config: cross-entropy only (equivalent to the v7 notebook).
+# Override any of these on the CLI, e.g.:
+#   python -m imgcap.train --config configs/default.yaml --epochs 50 --lr 1e-4
+
+# ── Data ──────────────────────────────────────────────────────────────
+images_dir: "data/flickr30k_images"
+captions_csv: "data/flickr30k_images/results.csv"
+split_csv_path: "artifacts/flickr30_split.csv"
+vocab_stoi_path: "artifacts/vocab_stoi.pkl"
+vocab_itos_path: "artifacts/vocab_itos.pkl"
+
+train_split: 0.70
+val_split: 0.20
+test_split: 0.10
+
+cap: null
+num_workers: 4
+
+# ── Model ─────────────────────────────────────────────────────────────
+feature_size: 2048
+lstm_hidden_size: 1024
+num_layers: 2
+embedding_dim: 1024
+attention_dim: 512
+dropout: 0.5
+
+# ── Optimisation ──────────────────────────────────────────────────────
+batch_size: 128
+epochs: 100
+lr: 0.0004
+encoder_lr: 0.00001
+weight_decay: 0.0001
+label_smoothing: 0.1
+teacher_forcing_ratio: 0.80
+grad_clip: 5.0
+
+warmup_epochs: 3
+lr_scheduler: "plateau"
+
+# Cross-entropy only -- leave unset (null) to disable the SCST stage.
+scst_start_epoch: null
+
+# ── Eval ──────────────────────────────────────────────────────────────
+eval_every: 1
+best_metric: "cider"
+
+# ── Checkpointing ─────────────────────────────────────────────────────
+save_dir: "checkpoints"
+save_every: 5
+resume_checkpoint: null
+pretrained_checkpoint: null
+
+# ── Logging (optional) ────────────────────────────────────────────────
+use_wandb: false
+wandb_project: "imgcap-flickr30k"
+wandb_run_name: "resnet50-lstm-attn"
+log_every: 1
+
+use_hf_hub: false
+hf_repo_id: null
+hf_private_repo: false
+
+# ── Misc ──────────────────────────────────────────────────────────────
+seed: 42
+device: "cuda"
